@@ -1,0 +1,11 @@
+#!/bin/sh
+
+## Uncomment the following if your 'node' binary is
+## in a non-standard location, and Passenger complains
+## about not being able to find the 'node' command.
+#
+# export PATH=/path-to-nodejs-bin-directory:$PATH
+
+# Tells Node.js to run with the --harmony_proxies switch.
+# Feel free to change or add switches as needed.
+exec node --harmony_proxies "$@"

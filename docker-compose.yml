@@ -1,0 +1,12 @@
+
+# Node Baseimage
+node-baseimage:
+  container_name: node-baseimage
+  build: .
+  dockerfile: Dockerfile
+  ports:
+    - '80:80'
+  environment:
+    - NODE_ENV=production
+    - PASSENGER_APP_ENV=production
+    - TERM=xterm
