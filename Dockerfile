@@ -1,7 +1,7 @@
-FROM phusion/passenger-full:0.9.20
+FROM phusion/passenger-full:0.9.25
 
-# Install node 6.x environment
-RUN curl -sL https://deb.nodesource.com/setup_6.x -o nodesource_setup.sh
+# Install node 8.x environment
+RUN curl -sL https://deb.nodesource.com/setup_8.x -o nodesource_setup.sh
 RUN bash nodesource_setup.sh
 
 # Install yarn
