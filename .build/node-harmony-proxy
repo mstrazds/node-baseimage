@@ -8,4 +8,4 @@
 
 # Tells Node.js to run with the --harmony_proxies switch.
 # Feel free to change or add switches as needed.
-exec node --harmony_proxies "$@"
+exec node "$@"
