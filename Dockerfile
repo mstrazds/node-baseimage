@@ -19,8 +19,9 @@ CMD ["/sbin/my_init"]
 # Set terminal to non-interactive
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Run update timezone replace city with relevant city. eg. "Australia/Sydney"
-RUN cp -p /usr/share/zoneinfo/Australia/Sydney /etc/localtime
+# Create new symlink to UTC timezone for localtime
+RUN unlink /etc/localtime
+RUN ln -s /usr/share/zoneinfo/UTC /etc/localtime
 
 # Copy friendly bashrc file for docker identification in terminal
 COPY .build/.bashrc /root/.bashrc
