@@ -1,4 +1,4 @@
-FROM phusion/passenger-full:0.9.25
+FROM phusion/passenger-full:0.9.26
 
 # Install node 8.x environment
 RUN curl -sL https://deb.nodesource.com/setup_8.x -o nodesource_setup.sh
