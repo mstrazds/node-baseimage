@@ -2,7 +2,7 @@
 A Node 8.x.x base image container. Builds upon on the excellent [phusion/passenger-full](https://github.com/phusion/passenger-docker) container. You can find the docker automated build [here](https://registry.hub.docker.com/u/mstrazds/node-baseimage/).
 
 ### Services
-All services are defined and managed using the phusion/baseimage methodology. Logs are output using syslog and can be accessed using ``docker logs {container}``.
+All services are defined and managed using the phusion/baseimage methodology. Logs are output using syslog and can be accessed using ``docker logs {container}``. 
 
 * Nginx
 * Passenger
