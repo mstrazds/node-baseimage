@@ -5,8 +5,7 @@ node-baseimage:
   build: .
   dockerfile: Dockerfile
   ports:
-    - '80:80'
+    - '8000:8000'
   environment:
     - NODE_ENV=production
-    - PASSENGER_APP_ENV=production
     - TERM=xterm

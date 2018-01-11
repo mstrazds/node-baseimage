@@ -1,4 +1,4 @@
-FROM phusion/passenger-full:0.9.26
+FROM phusion/baseimage:0.9.22
 
 # Install node 8.x environment
 RUN curl -sL https://deb.nodesource.com/setup_8.x -o nodesource_setup.sh
@@ -9,7 +9,10 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
 # Install Ubuntu Packages
-RUN apt-get update && apt-get install nodejs yarn vim wget -y
+RUN apt-get update && apt-get install nodejs yarn vim wget htop -y
+
+# Install PM2
+RUN npm install pm2 -g
 
 # Phusion setup
 ENV HOME /root
@@ -26,24 +29,12 @@ RUN ln -s /usr/share/zoneinfo/UTC /etc/localtime
 # Copy friendly bashrc file for docker identification in terminal
 COPY .build/.bashrc /root/.bashrc
 
-# Remove the default site
-RUN rm /etc/nginx/sites-enabled/default
-
-# COPY .build/default /etc/nginx/sites-available/default
-COPY .build/app.conf /etc/nginx/sites-enabled/app.conf
-COPY .build/node-harmony-proxy /usr/local/bin/node-harmony-proxy
-
-# Make harmony proxy wrapper executable for passenger service
-RUN chmod +x /usr/local/bin/node-harmony-proxy
-
-# Preserve Environment Variables for Nginx/Passenger
-COPY .build/env.conf /etc/nginx/main.d/env.conf
+# Copy startup script script for node services
+COPY .build/01_node_services.sh /etc/my_init.d/01_node_services.sh
+RUN chmod +x /etc/my_init.d/01_node_services.sh
 
 # Set terminal environment
 ENV TERM=xterm
-
-# Setup Nginx
-RUN rm -f /etc/service/nginx/down
 
 # Setup working dir/create empty public folder
 WORKDIR /home/app
@@ -53,7 +44,6 @@ RUN mkdir -p /home/app/public
 COPY . /home/app
 
 # Setup Public folder permissions
-RUN chown -R app:app /home/app/public
 RUN chmod -R 755 /home/app/public
 
 # Clean up APT when done.
