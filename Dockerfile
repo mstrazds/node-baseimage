@@ -9,7 +9,7 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
 # Install Ubuntu Packages
-RUN apt-get update && apt-get install nodejs yarn vim wget htop -y
+RUN apt-get update && apt-get install nodejs git-core yarn vim wget htop -y
 
 # Install PM2
 RUN npm install pm2 -g
