@@ -2,7 +2,7 @@
 A Node 8.x.x base image container. Builds upon on the [phusion/baseimage-full](https://github.com/phusion/baseimage-docker) container. You can find the docker automated build [here](https://registry.hub.docker.com/u/mstrazds/node-baseimage/).
 
 ### Services
-All services are defined and managed using the phusion/baseimage methodology. NodeJS services should utilise the PM2 service monitor for all processes. Logs are output using syslog and can be accessed using ``docker logs {container}``.
+All services are defined and managed using the phusion/baseimage methodology. NodeJS services utilise the PM2 service monitor for processes. Logs are output using syslog and can be accessed using ``docker logs {container}``. PM2 does not need to be used if not required.
 
 * PM2 (for controlling services)
 
