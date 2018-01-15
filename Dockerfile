@@ -12,7 +12,7 @@ RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources
 RUN apt-get update && apt-get install nodejs git-core yarn vim wget htop -y
 
 # Install PM2
-RUN npm install pm2 -g
+RUN npm install pm2
 
 # Phusion setup
 ENV HOME /root
