@@ -1,4 +1,4 @@
-FROM phusion/baseimage:0.9.22
+FROM mstrazds/arm64-baseimage-docker:latest
 
 # Install node 8.x environment
 RUN curl -sL https://deb.nodesource.com/setup_8.x -o nodesource_setup.sh
